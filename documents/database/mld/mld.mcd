@@ -1,9 +1,9 @@
 %%mocodo
 :::
-PROJECT: code, name, key, created_at, updated_at
+PROJECT: code, name, domain, key, secret_key, #code_user > USER > code
 :
 
 
 :
-USER: code, name, email, password, created_at, updated_at, #code_project > PROJECT > code
+USER: code, name, email, password
 :::

@@ -1,5 +1,5 @@
 possess, 0N PROJECT, 11 USER
-PROJECT: code, name, key
+PROJECT: code, name, domain, key
 
 USER: code, name, email, password
 :

@@ -1,6 +1,6 @@
 %%mocodo
 :::
-PROJECT: code, name, key, created_at, updated_at
+PROJECT: code, name, domain, key, created_at, updated_at
 :
 
 

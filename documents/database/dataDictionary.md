@@ -13,10 +13,11 @@
 
 ## Project
 
-| Field      | Type        | Specifications                                  | Comment            |
-| ---------- | ----------- | ----------------------------------------------- | ------------------ |
-| id         | INT         | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | project identifier |
-| name       | VARCHAR(64) | NOT NULL                                        | proejct name       |
-| key        | VARCHAR(64) | NOT NULL                                        | project key        |
-| created_at | DATETIME    | NOT NULL, DEFAULT CURRENT_TIMESTAMP             | project created    |
-| updated_at | DATETIME    | NULL                                            | project updated    |
+| Field      | Type         | Specifications                                  | Comment            |
+| ---------- | ------------ | ----------------------------------------------- | ------------------ |
+| id         | INT          | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | project identifier |
+| name       | VARCHAR(64)  | NOT NULL                                        | project name       |
+| domain     | VARCHAR(128) | NOT NULL                                        | project domain     |
+| key        | VARCHAR(64)  | NOT NULL                                        | project key        |
+| created_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP             | project created    |
+| updated_at | DATETIME     | NULL                                            | project updated    |

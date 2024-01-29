@@ -18,6 +18,7 @@
 | id         | INT          | PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT | project identifier |
 | name       | VARCHAR(64)  | NOT NULL                                        | project name       |
 | domain     | VARCHAR(128) | NOT NULL                                        | project domain     |
-| key        | VARCHAR(64)  | NOT NULL                                        | project key        |
+| key        | VARCHAR(32)  | NOT NULL                                        | project key        |
+| secret_key | VARCHAR(64)  | NOT NULL                                        | project secret key |
 | created_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP             | project created    |
 | updated_at | DATETIME     | NULL                                            | project updated    |

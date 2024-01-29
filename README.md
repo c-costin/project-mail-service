@@ -38,7 +38,7 @@ Cette application est conçue pour faciliter l'envoi d'e-mails à partir d'autre
 
 ### Installation du projet
 
-1. Cloné le projet
+1. Clonez le projet
 
 ```bash
 git clone git@github.com:c-costin/project-mail-service.git
@@ -50,7 +50,7 @@ git clone git@github.com:c-costin/project-mail-service.git
 cd project-mail-service
 ```
 
-3. Lancé les conteneurs
+3. Lancez les conteneurs
 
 ```bash
 docker compose up -d

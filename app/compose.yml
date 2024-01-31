@@ -1,0 +1,49 @@
+name: api-egara
+
+services:
+  # Container => application PHP
+  # php:
+  #   image: imageName
+  #   networks:
+  #     - private
+
+  # Container => web server NGINX
+  # nginx:
+  #   image: nginx:latest
+  #   networks:
+  #     - public
+  #     - private
+  #   ports:
+  #     - "8000:80"
+  #     - "443:443"
+
+  # Container => database MariaDB
+  database:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: egara
+      MYSQL_ROOT_PASSWORD: egara
+    volumes:
+      - database_data:/var/lib/mariadb/data:rw
+    # networks:
+    #   - private
+    ports:
+      - "53306:3306"
+
+  # Container => database interface Adminer
+  adminer:
+    image: adminer:latest
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+    restart: always
+    ports:
+      - 8001:8080
+
+# networks:
+#   public:
+#   private:
+#     internal: true
+
+volumes:
+  database_data:

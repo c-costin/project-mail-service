@@ -1,49 +1,64 @@
-name: api-egara
+name: mail_service
 
 services:
   # Container => application PHP
-  # php:
-  #   image: imageName
-  #   networks:
-  #     - private
+  php:
+    build: ./
+    networks:
+      - private
+      - public
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - database
+    command: "symfony server:start"
+    restart: on-failure
 
   # Container => web server NGINX
   # nginx:
-  #   image: nginx:latest
+  #   image: nginx@sha256:6d4c504d44906d9f8e6c1390c8e541f9b0a456a6f10752107c63fe72c55801dc
   #   networks:
   #     - public
   #     - private
   #   ports:
   #     - "8000:80"
   #     - "443:443"
+  #   restart: on-failure
+  #   depends_on:
+  #     - php
 
   # Container => database MariaDB
   database:
-    image: mariadb:latest
-    restart: always
+    image: mariadb@sha256:0a2c136bd7f771adcefe93b8cc828dcb9a451d93b305492fcc463f882f96b97f
     environment:
-      MYSQL_DATABASE: egara
-      MYSQL_ROOT_PASSWORD: egara
+      MYSQL_DATABASE: mail_service
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - database_data:/var/lib/mariadb/data:rw
-    # networks:
-    #   - private
+    networks:
+      - private
     ports:
-      - "53306:3306"
+      - "3306:3306"
+    restart: on-failure
 
   # Container => database interface Adminer
   adminer:
-    image: adminer:latest
+    image: adminer@sha256:0d84fb86f1a1d7b20b6d94a23c379e71b77a36920321d662077516c514d582c3
     environment:
       ADMINER_DEFAULT_SERVER: database
-    restart: always
+    networks:
+      - private
+      - public
     ports:
       - 8001:8080
+    restart: on-failure
 
-# networks:
-#   public:
-#   private:
-#     internal: true
+networks:
+  public:
+  private:
+    internal: true
 
 volumes:
   database_data:

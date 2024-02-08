@@ -9,6 +9,7 @@ rmdir ./install/
 # Require bundle env:DEV
 composer require --dev symfony/var-dumper
 composer require --dev symfony/maker-bundle
+composer require --dev symfony/profiler-pack
 
 # Require bundle env:PROD
 composer require symfony/security-bundle

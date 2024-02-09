@@ -2,19 +2,19 @@ name: mail_service
 
 services:
   # Container => application PHP
-  php:
-    build: ./
-    networks:
-      - private
-      - public
-    ports:
-      - '8000:8000'
-    volumes:
-      - ./:/var/www/
-    depends_on:
-      - database
-    command: "symfony server:start"
-    restart: on-failure
+  # php:
+  #   build: ./
+  #   networks:
+  #     - private
+  #     - public
+  #   ports:
+  #     - '8000:8000'
+  #   volumes:
+  #     - ./:/var/www/
+  #   depends_on:
+  #     - database
+  #   command: "symfony server:start"
+  #   restart: on-failure
 
   # Container => web server NGINX
   # nginx:

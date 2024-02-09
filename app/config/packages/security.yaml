@@ -16,6 +16,17 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            custom_authenticator: App\Security\LoginAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_login
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -23,11 +34,18 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+            # configure the maximum login attempts
+            login_throttling:
+                max_attempts: 3
+                interval: '15 minutes'
+
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/inscription, roles: PUBLIC_ACCESS, method: [GET, POST] }
+        - { path: ^/connexion, roles: PUBLIC_ACCESS, method: [GET, POST] }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY } 
 
 when@test:
     security:

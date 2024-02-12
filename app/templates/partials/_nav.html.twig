@@ -42,19 +42,19 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="/">
+					<a class="nav-link {{ currentPage == 'home' ? 'active' : ''}}" href="/">
 						<i class="bi bi-house"></i>
 						Tableau de bord
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/documentation">
-						<i class="bi bi-chat"></i>
+					<a class="nav-link {{ currentPage == 'documentation' ? 'active' : ''}}" href="/documentation">
+						<i class="bi bi-file-text"></i>
 						Documentation
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/statisques" disabled>
+					<a class="nav-link {{ currentPage == 'statics' ? 'active' : ''}}" href="/statisques" disabled>
 						<i class="bi bi-bar-chart"></i>
 						Statisques
 					</a>
@@ -72,13 +72,13 @@
 			<!-- User (md) -->
 			<ul class="navbar-nav mb-5">
 				<li class="nav-item">
-					<a class="nav-link" href="/compte">
+					<a class="nav-link {{ currentPage == 'account' ? 'active' : ''}}" href="/compte">
 						<i class="bi bi-person-square"></i>
 						Compte
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/parametres">
+					<a class="nav-link {{ currentPage == 'settings' ? 'active' : ''}}" href="/parametres">
 						<i class="bi bi-gear"></i>
 						Paramètres
 					</a>

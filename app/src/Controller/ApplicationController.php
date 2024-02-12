@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class DocumentationController extends AbstractController
+class ApplicationController extends AbstractController
 {
-    #[Route('/documentation', name: 'app_documentation')]
-    public function documentation(): Response
+    #[Route('/application/ajouter', name: 'app_application')]
+    public function add(): Response
     {
         return $this->render(
-            'documentation/index.html.twig',
+            'application/add.html.twig',
             [
-                'currentPage' => 'documentation'
+                'currentPage' => 'home'
             ]
         );
     }

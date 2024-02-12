@@ -11,6 +11,10 @@ class SettingController extends AbstractController
     #[Route('/parametres', name: 'app_setting')]
     public function index(): Response
     {
-        return $this->render('setting/index.html.twig');
+        return $this->render('setting/index.html.twig',
+        [
+            'currentPage' => 'settings'
+        ]
+    );
     }
 }

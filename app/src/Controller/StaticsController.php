@@ -11,6 +11,10 @@ class StaticsController extends AbstractController
     #[Route('/statisques', name: 'app_statics')]
     public function index(): Response
     {
-        return $this->render('statics/index.html.twig');
+        return $this->render('statics/index.html.twig',
+        [
+            'currentPage' => 'statics'
+        ]
+    );
     }
 }

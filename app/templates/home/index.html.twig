@@ -21,7 +21,7 @@
 							<!-- Actions -->
 							<div class="col-md-6 col-12 text-md-end">
 								<div class="mx-n1">
-									<a href="/application/ajouter" class="btn d-inline-flex btn-sm btn-primary mx-1">
+									<a href="/application/ajouter" class="btn d-inline-flex btn-primary mx-1">
 										<span class=" pe-2">
 											<i class="bi bi-plus-circle"></i>
 										</span>
@@ -44,7 +44,7 @@
 							<div class="card w-full m-3">
 								<div class="card-body">
 									<h4 class="card-title">{{app.name}}</h4>
-									<div class="d-flex  justify-content-between">
+									<div class="d-flex  justify-content-between align-items-end">
 										<div class="d-flex">
 											<div class="">
 												<h5>Identifiant</h5>
@@ -55,7 +55,13 @@
 												<p class="card-text">{{app.domain}}</p>
 											</div>
 										</div>
-										<a href="#" class="btn btn-primary">Editer</a>
+										<div class="d-flex gap-2">
+											<form action="/application/supprimer/{{app.id}}" method="post">
+												<input type="hidden" name="_csrf_token" value="{{csrf_token('application_remove')}}">
+												<button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+											</form>
+											<a href="/application/editer/{{app.id}}" class="btn btn-sm btn-primary">Editer</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -64,8 +70,7 @@
 
 				{% else %}
 					<div class="border border-2 bg-surface-secondary h-full border-dashed rounded d-flex flex-column justify-content-center align-items-center" style="min-height: 400px;">
-						<div
-							class="display-4 font-semibold text-muted opacity-50">
+						<div class="display-4 font-semibold text-muted opacity-50">
 							<span>Aucune application trouvée</span>
 						</div>
 					</div>

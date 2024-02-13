@@ -1,0 +1,43 @@
+<form class="mb-6" method="POST">
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="name">Nom de l'application</label>
+			<input type="text" class="form-control" name="name" id="name" placeholder="Portfolio John Doe" value="{{ project is defined ? project.name : '' }}" maxlength="64" required>
+		</div>
+	</div>
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="domain">Nom de domaine</label>
+			<input type="text" class="form-control" name="domain" id="domain" placeholder="domaine.fr" value="{{ project is defined ? project.domain : '' }}" pattern="^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\\.)+[A-Za-z]{2, 6}$" required>
+		</div>
+	</div>
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="appKey">
+				Identifiant
+				<span class="mx-2 text-warning">
+					<i class="bi bi-info-circle"></i>
+					Ce champ est généré
+				</span>
+			</label>
+			<input type="text" class="form-control" name="appKey" id="appKey" value="{{ project  is defined ? project.projectKey : appKey }}" minlength="16" maxlength="16" required>
+		</div>
+	</div>
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="secretKey">
+				Clé secrète
+				<span class="mx-2 text-warning">
+					<i class="bi bi-info-circle"></i>
+					Ce champ est généré
+				</span>
+			</label>
+			<input type="text" class="form-control" name="secretKey" id="secretKey" value="{{ project is defined ? project.secretKey : secretKey }}" minlength="32" maxlength="32" required>
+		</div>
+	</div>
+	<input type="hidden" name="_csrf_token" value="{{csrf_token('application_' ~ currentAction)}}">
+	<div class="text-end">
+		<a href="/" class="btn btn-sm btn-danger">Annuler</a>
+		<button type="submit" class="btn btn-sm btn-primary">Enregistrer</button>
+	</div>
+</form>

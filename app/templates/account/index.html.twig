@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mon Compte
+{% endblock %}
+
+{% block main %}
+	<div class="px-3 px-lg-7 flex-grow-1 overflow-y-lg-auto">
+				<header class="bg-surface-secondary border-top">
+			<div class="container-xl">
+				<div
+					class="py-5 border-bottom">
+					<!-- Page heading -->
+					<div>
+						<div class="row align-items-center">
+							<div
+								class="col-md-6 col-12 mb-3 mb-md-0">
+								<!-- Title -->
+								<h1 class="h2 mb-0 ls-tight">Mon Compte</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+				<main
+			class="py-10 bg-surface-secondary">
+			<!-- Container -->
+			<div class="container-xl">
+				{% include "account/form.html.twig" %}
+			</div>
+		</main>
+	</div>
+{% endblock %}

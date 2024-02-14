@@ -8,7 +8,7 @@
 	<div class="row my-5">
 		<div>
 			<label class="form-label" for="domain">Nom de domaine</label>
-			<input type="text" class="form-control" name="domain" id="domain" placeholder="domaine.fr" value="{{ project is defined ? project.domain : '' }}" pattern="^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\\.)+[A-Za-z]{2, 6}$" required>
+			<input type="text" class="form-control" name="domain" id="domain" placeholder="domaine.org" value="{{ project is defined ? project.domain : '' }}" pattern="[a-z]{2,64}[.][a-z]{2,6}$" required>
 		</div>
 	</div>
 	<div class="row my-5">

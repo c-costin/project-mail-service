@@ -62,7 +62,7 @@
 									Mot de passe
 									<span class="text-danger">*</span>
 								</label>
-								<input type="password" name="password" id="inputPassword" class="form-control form-control-muted" autocomplete="new-password" required>
+								<input type="password" name="password" id="inputPassword" class="form-control form-control-muted" autocomplete="new-password" pattern="/^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{12,}$/" required>
 							</div>
 							<div class="mb-5">
 								<div class="form-check">

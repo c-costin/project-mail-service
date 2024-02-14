@@ -1,0 +1,24 @@
+<form class="mb-6" method="POST">
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="name">Nom</label>
+			<input type="text" class="form-control" name="name" id="name" value="{{ user.name }}" maxlength="64" required>
+		</div>
+	</div>
+	<div class="row my-5">
+		<div>
+			<label class="form-label" for="email">Email</label>
+			<input type="email" class="form-control" name="email" id="email" value="{{ user.email }}" maxlength="180" required>
+		</div>
+	</div>
+	<input type="hidden" name="_csrf_token" value="{{csrf_token('account')}}">
+	<div class="text-end">
+		<a href="/" class="btn btn-sm btn-danger">Annuler</a>
+		<button type="submit" class="btn btn-sm btn-primary">Enregistrer</button>
+	</div>
+</form>
+
+<form action="/compte/suppression/{{user.id}}" method="post" class="row my-12">
+	<input type="hidden" name="_csrf_token" value="{{csrf_token('account_remove')}}">
+	<button class="btn btn-sm btn-danger w-auto">Supprimer mon compte</button>
+</form>

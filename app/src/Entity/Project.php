@@ -5,23 +5,27 @@ namespace App\Entity;
 use App\Repository\ProjectRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
-class Project
+class Project implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 64)]
-    private ?string $name = null;
+    #[ORM\Column(length: 32, unique: true)]
+    private ?string $appKey = null;
+
+    #[ORM\Column]
+    private array $roles = [];
 
     #[ORM\Column(length: 128)]
     private ?string $domain = null;
 
-    #[ORM\Column(length: 32)]
-    private ?string $projectKey = null;
+    #[ORM\Column(length: 64)]
+    private ?string $name = null;
 
     #[ORM\Column(length: 64)]
     private ?string $secretKey = null;
@@ -46,16 +50,47 @@ class Project
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getAppKey(): ?string
     {
-        return $this->name;
+        return $this->appKey;
     }
 
-    public function setName(string $name): static
+    public function setAppKey(string $appKey): static
     {
-        $this->name = $name;
+        $this->appKey = $appKey;
 
         return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->appKey;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getDomain(): ?string
@@ -70,14 +105,14 @@ class Project
         return $this;
     }
 
-    public function getProjectKey(): ?string
+    public function getName(): ?string
     {
-        return $this->projectKey;
+        return $this->name;
     }
 
-    public function setProjectKey(string $projectKey): static
+    public function setName(string $name): static
     {
-        $this->projectKey = $projectKey;
+        $this->name = $name;
 
         return $this;
     }
